@@ -135,3 +135,25 @@
   </footer>
 </body>
 </html>
+
+<script>
+  const eyeIcons = document.querySelectorAll('.form-icon--eye');
+  eyeIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        const passwordInput = this.closest('.form-group').querySelector('input');
+      
+        const eyeImage = this.querySelector('img');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeImage.src = 'img/Eye-open.png';
+            this.classList.add('Eye--open');     
+        } 
+        else if(passwordInput.type === 'text') {
+            passwordInput.type = 'password';
+            eyeImage.src = 'img/Eye.png'; 
+            this.classList.remove('Eye--open'); 
+        }
+    });
+});
+</script>

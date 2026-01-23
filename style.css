@@ -162,7 +162,9 @@
     pointer-events: auto;
 }
 
-
+.form-icon--eye.Eye--open img {
+    filter: brightness(0) saturate(100%) invert(80%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(90%);
+}
 
 .form-group input {
     width: 100%;
