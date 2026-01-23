@@ -20,7 +20,7 @@
     width: 100%;
 }
 
-/* Header */
+
 .header {
     background-color: var(--color-dark);
 }
@@ -85,7 +85,7 @@
     height: 20px;
 }
 
-/* Main Auth Section */
+
 .auth__inner {
     display: flex;
     min-height: calc(100vh - 100px);
@@ -94,7 +94,6 @@
 .auth__image {
     flex: 1;
     overflow: hidden;
-    max-height: 100vh;
     width: 50%;
 }
 
@@ -322,7 +321,7 @@
     opacity: 0.9;
 }
 
-/* Адаптивность */
+
 @media (min-width: 1440px) {
     .container {
         max-width: 1400px;
@@ -346,7 +345,7 @@
         max-width: 500px;
     }
     .form-icon--rocket{
-        left: 36%
+        left: 35%
     }
 }
 
