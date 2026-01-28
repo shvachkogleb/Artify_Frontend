@@ -7,32 +7,34 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-
   <header class="header">
     <div class="container">
-    <div class="header__inner">
-      <a href="/" class="logo">
-        <img src="img/Storefront.png" alt="NFT Marketplace">
-        <span>NFT Marketplace</span>
-      </a>
+      <div class="header__inner">
+        <a href="/" class="logo">
+          <img src="img/Storefront.png" alt="NFT Marketplace">
+          <span>NFT Marketplace</span>
+        </a>
 
-
-      <nav class="nav">
-        <a href="#">Marketplace</a>
-        <a href="#">Rankings</a>
-        <a href="#">Connect a wallet</a>
-        <a href="/" class="btn btn--sign">
+        <nav class="nav">
+          <a href="#">Marketplace</a>
+          <a href="#">Rankings</a>
+          <a href="#">Connect a wallet</a>
+          <a href="/" class="btn btn--sign">
             <img src="img/User.png" alt="NFT Marketplace">
             <span>Sign up</span>
-        </a>
-      </nav>
-    </div>
+          </a>
+        </nav>
+
+        <button class="header_burger-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-
- <main class="auth">
+  <main class="auth">
     <div class="auth__inner">
       <section class="auth__image">
         <img src="img/main_img.png" alt="NFT illustration" />
@@ -81,12 +83,14 @@
           </div>
 
           <div class="form-group">
-        <button type="submit" class="btn--accent">
-            <span class="form-icon form-icon--rocket">
-                <img src="img/Rocket.png" alt="">
-            </span>
-            <span class="btn__text">Create account</span>
-        </button>
+          <button type="submit" class="btn--accent">
+              <div class="btn__content">
+                  <span class="form-icon form-icon--rocket">
+                      <img src="img/Rocket.png" alt="">
+                  </span>
+                  <span class="btn__text">Create account</span>
+              </div>
+          </button>
           </div>
         </form>
       </section>
@@ -95,65 +99,136 @@
 
   <footer class="footer">
     <div class="container">
-    <div class="footer__inner">
-    <div class="footer__info">
-        <div class="footer__logo-row">
-            <img src="img/Storefront.png" alt="NFT Marketplace" id="main_logo">
-            <h2>NFT Marketplace</h2>
+      <div class="footer__inner">
+        <div class="footer__info">
+            <div class="footer__logo-row">
+                <img src="img/Storefront.png" alt="NFT Marketplace" id="main_logo">
+                <h2>NFT Marketplace</h2>
+            </div>
+            <p>NFT marketplace UI created <br/>with Anima for Figma.</p>
+            <p>Join our community</p>
+            <div class="footer__social">
+                <img src="img/Discord.png" alt="Discord logo">
+                <img src="img/Youtube.png" alt="Youtube logo">
+                <img src="img/Twitter.png" alt="Twitter logo">
+                <img src="img/Instagram.png" alt="Instagram logo">
+            </div>
         </div>
-        <p>NFT marketplace UI created <br/>with Anima for Figma.</p>
-        <p>Join our community</p>
-        <div class="footer__social">
-            <img src="img/Discord.png" alt="Discord logo">
-            <img src="img/Youtube.png" alt="Youtube logo">
-            <img src="img/Twitter.png" alt="Twitter logo">
-            <img src="img/Instagram.png" alt="Instagram logo">
-        </div>
-    </div>
 
-      <div class="footer__links">
-        <h2>Explore</h2>  
-        <p>Marketplace</p>
-        <br/>
-        <p>Marketplace</p>
-        <br/>
-        <p>Marketplace</p>
-      </div>
-
-      <div class="footer__subscribe">
-        <h2>Join our weekly digest</h2>
-        <p>Get exclusive promotions & updates straight to your inbox.</p>
-        <form>
-          <div class="footer__form">
-            <input type="email" placeholder="Enter your email here" class="input--email"/>
-            <button class="btn--subscribe">Subscribe</button>
+          <div class="footer__links">
+            <h2>Explore</h2>  
+            <p>Marketplace</p>
+            <br/>
+            <p>Marketplace</p>
+            <br/>
+            <p>Marketplace</p>
           </div>
-        </form>
+
+          <div class="footer__subscribe">
+            <h2>Join our weekly digest</h2>
+            <p>Get exclusive promotions & updates straight to your inbox.</p>
+            <form>
+              <div class="footer__form">
+                <input type="email" placeholder="Enter your email here" class="input--email"/>
+                <button class="btn--subscribe">Subscribe</button>
+              </div>
+            </form>
+          </div>
       </div>
-    </div>
     </div>
   </footer>
+
+  <div class="nav-overlay"></div>
+  
+  <script>
+    const eyeIcons = document.querySelectorAll('.form-icon--eye');
+    eyeIcons.forEach(icon => {
+      icon.addEventListener('click', function() {
+          const passwordInput = this.closest('.form-group').querySelector('input');
+          const eyeImage = this.querySelector('img');
+
+          if (passwordInput.type === 'password') {
+              passwordInput.type = 'text';
+              eyeImage.src = 'img/Eye-open.png';
+              this.classList.add('Eye--open');     
+          } 
+          else if(passwordInput.type === 'text') {
+              passwordInput.type = 'password';
+              eyeImage.src = 'img/Eye.png'; 
+              this.classList.remove('Eye--open'); 
+          }
+      });
+    });
+
+    const burgerBtn = document.querySelector('.header_burger-btn');
+    const nav = document.querySelector('.nav');
+    const overlay = document.querySelector('.nav-overlay');
+    const body = document.body;
+
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 998;
+    `;
+
+    burgerBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      nav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      
+      if (nav.classList.contains('active')) {
+        overlay.style.opacity = '1';
+        overlay.style.visibility = 'visible';
+        body.style.overflow = 'hidden';
+      } else {
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+        body.style.overflow = 'auto';
+      }
+    });
+
+
+    overlay.addEventListener('click', function() {
+      burgerBtn.classList.remove('active');
+      nav.classList.remove('active');
+      overlay.classList.remove('active');
+      overlay.style.opacity = '0';
+      overlay.style.visibility = 'hidden';
+      body.style.overflow = 'auto';
+    });
+
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 992) {
+          burgerBtn.classList.remove('active');
+          nav.classList.remove('active');
+          overlay.classList.remove('active');
+          overlay.style.opacity = '0';
+          overlay.style.visibility = 'hidden';
+          body.style.overflow = 'auto';
+        }
+      });
+    });
+
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 992) {
+        burgerBtn.classList.remove('active');
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+        overlay.style.opacity = '0';
+        overlay.style.visibility = 'hidden';
+        body.style.overflow = 'auto';
+      }
+    });
+  </script>
 </body>
 </html>
-
-<script>
-  const eyeIcons = document.querySelectorAll('.form-icon--eye');
-  eyeIcons.forEach(icon => {
-    icon.addEventListener('click', function() {
-        const passwordInput = this.closest('.form-group').querySelector('input');
-      
-        const eyeImage = this.querySelector('img');
-
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            eyeImage.src = 'img/Eye-open.png';
-            this.classList.add('Eye--open');     
-        } 
-        else if(passwordInput.type === 'text') {
-            passwordInput.type = 'password';
-            eyeImage.src = 'img/Eye.png'; 
-            this.classList.remove('Eye--open'); 
-        }
-    });
-});
-</script>
