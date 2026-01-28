@@ -486,15 +486,11 @@
 
     .auth__content{
         width: 100%;
-        padding-left: 60px;
         margin-top: 0;
     }
 
     .form-icon--rocket{
         display: block;
-    }
-    .btn__text{
-        padding-right: 40px;
     }
 
         .footer {
