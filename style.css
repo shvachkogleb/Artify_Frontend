@@ -467,7 +467,15 @@
     .auth__content {
         align-items: center;
     }
-
+    .auth__content p {
+        max-width: 100%; 
+        font-size: 17px;
+        align-items: center;
+        justify-items: center;
+    }
+    .auth__content h1{
+        font-size: 30px;
+    }
     .auth__inner{
         display: flex;
         flex-direction: column;
@@ -539,6 +547,15 @@
         width: 100%;
         border-radius: 0 0 15px 15px;
         padding: 15px;
+    }
+}
+
+@media(max-width: 450px) {
+    .auth__content h1{
+        font-size: 25px;
+    }
+    .auth__content p{
+        padding: 0 40px;
     }
 }
 
