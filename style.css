@@ -465,7 +465,7 @@
 
 @media (max-width: 1000px){   
     .auth__content {
-        padding: 40px 20px;
+        padding: 40px;
         align-items: center;
     }
 
